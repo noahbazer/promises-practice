@@ -51,12 +51,9 @@ export const fetchCharacterById = (id) => {
 
 export const fetchAllCharactersByIds = async (ids) => {
   const promises = ids.map(id => fetchCharacterById(id));
-
+  console.log(promises);
   return Promise.all(promises)
     .then(results => {
-      if (results.some(result => result === undefined)) {
-        return [];
-      }
+      console.log(results);
       return results;
-    });
-};
+    }).catch(() => [])};
