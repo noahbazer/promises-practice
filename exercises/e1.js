@@ -4,31 +4,22 @@
  **/
 
 export const createOneSecondPromise = () => {
-  const oneSecondPromise = new Promise((resolve) => {
+  return new Promise((resolve) => {
     setTimeout(() => {
-      resolve('The PROMISE was RESOLVED');
+      resolve("The PROMISE was RESOLVED");
     }, 1000);
   });
-
-  return oneSecondPromise;
 };
 
 export const logMessageAfterOneSecond = (message) => {
-  const onFulfilled = () => {
+  createOneSecondPromise().then(() => {
     console.log(message);
-  };
-
-createOneSecondPromise()
-  .then(onFulfilled);
+  });
 };
 
 export const logMessageAfterOneSecondAwait = async (message) => {
-  const onFulfilled = () => {
-    console.log(message);
-  };
-
-  await createOneSecondPromise()
-    .then(onFulfilled);
+  await createOneSecondPromise();
+  console.log(message);
 };
 
 // === TEST YOURSELF ===

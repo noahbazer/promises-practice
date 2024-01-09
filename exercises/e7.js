@@ -30,7 +30,6 @@ export function parsePromised(json_string) {
   });
 }
 
-
 /**
  * @task
  * Create a function called `onReject` that follows the rules:
@@ -56,16 +55,11 @@ export function onReject(error) {
 
 export const handlePromise = (promise) => {
   return promise
-    .then(value => value)
-    .catch(error => {
-      if (error.message) {
-        onReject(error);
-        return;
-      }
-      return error;
+    .then((value) => value)
+    .catch((error) => {
+      return error.message ? onReject(error) : error;
     });
 };
-
 
 // === TEST YOURSELF ===
 // Once you're finished run the test with "npm run test-7"

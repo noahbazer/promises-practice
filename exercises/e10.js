@@ -1,13 +1,9 @@
 export const getFirstResolvedPromise = (promises) => {
-  return new Promise((resolve) => {
-    promises.forEach((p) => {
-      p.then(resolve).catch(() => {});
-    });
-  });
+  return Promise.any(promises);
 };
 
 export const getFirstPromiseOrFail = (promises) => {
-  return Promise.race(promises.map(p => p.catch(e => Promise.reject(e))));
+  return Promise.race(promises);
 };
 
 export const getQuantityOfRejectedPromises = (promises) => {

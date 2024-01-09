@@ -36,7 +36,7 @@ throw new Error("OH NOES");
  */
 
 export function onReject(arg) {
-  if (typeof arg === 'object') {
+  if (arg.message) {
     console.log(arg.message);
   } else {
     console.log(arg);
